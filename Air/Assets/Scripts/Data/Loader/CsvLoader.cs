@@ -18,21 +18,28 @@ using UnityEngine;
 public class CsvLoader
 {
 
+    enum LoadType
+    {
+        LoadKey,
+        LoadValueType,
+        LoadValue
+    }
     private const string CsvPathRoot = "Csv/";
 
-    public static Dictionary<int, Dictionary<string, string>> LoadDataBaseCsv(string path)
+    public static Dictionary<int, DataTable> LoadDataBaseCsv(string path)
     {
+        int index = 1;
+        Dictionary<int, DataTable> csvTable = new Dictionary<int, DataTable>();
         var asset = Resources.Load(CsvPathRoot + path, typeof(TextAsset)) as TextAsset;
 
         string value = asset.text;
 
         //分割行
         string[] strLine = value.Split('\n');
-        bool isLoadTypeEnd = false;
-        Dictionary<int, string> dataTypeTable = new Dictionary<int, string>();
-		Dictionary<int, Dictionary <string, string>> dataBase = new Dictionary<int, Dictionary<string, string>>();
-		int index = -1;
+        List<string> dataKeyList = new List<string>();
+        Dictionary<string, string> dataTypeTable = new Dictionary<string, string>();
 
+        LoadType currentLoadType = LoadType.LoadKey;
         for (int i = 0; i < strLine.Length; i++)
         {
             string currentStrLine = strLine[i];
@@ -41,45 +48,60 @@ public class CsvLoader
             {
                 continue;
             }
+            DataTable currentData = new DataTable();
             string[] currentDatas = currentStrLine.Split(',');
             // 读取数据
-            Dictionary<string, string> data = new Dictionary<string, string>();
-
-
             for (int j = 0; j < currentDatas.Length; j++)
             {
-                if (!isLoadTypeEnd)
+                if (currentLoadType == LoadType.LoadKey)
                 {
-                    //  读取数据类型
-                    dataTypeTable.Add(j, currentDatas[j]);
+                    //  读取数据Key
+                    dataKeyList.Add(currentDatas[j]);
 
+                }
+                else if (currentLoadType == LoadType.LoadValueType)
+                {
+                    //  读取数据类型ß
+                    dataTypeTable.Add(dataKeyList[j], currentDatas[j]);
                 }
                 else
                 {
-                    // 登录各行数据
-					Debug.Log(dataTypeTable[j] + "," + currentDatas[j]);
-                    //data.Add(dataTypeTable[j], currentDatas[j]);
-					
+                    string typeSrt = dataTypeTable[dataKeyList[j]];
+                    // 登录本行数据
+                    if (typeSrt == "srting")
+                    {
+                        currentData.AddSrtingValue(dataKeyList[j], currentDatas[j]);
+                    }
+                    else if (typeSrt == "int")
+                    {
+                        currentData.AddIntValue(dataKeyList[j], int.Parse(currentDatas[j]));
+                    }
+                    else if (typeSrt == "float")
+                    {
+                        currentData.AddFloatValue(dataKeyList[j], float.Parse(currentDatas[j]));
+                    }
                 }
-				
-            }
-			
 
-            if (!isLoadTypeEnd)
-            {
-				for(int ii = 0; ii < dataTypeTable.Count; ii++) {
-                    // 登录
-                    dataBase.Add(ii, null);
-				}
-                isLoadTypeEnd = true;
-            } else {
-				dataBase[index] = data;
             }
+            // 读取下一行
+            if (currentLoadType == LoadType.LoadKey)
+            {
+                currentLoadType = LoadType.LoadValueType;
+            }
+            else if (currentLoadType == LoadType.LoadValueType)
+            {
+                currentLoadType = LoadType.LoadValue;
+            }
+            else
+            {
+                csvTable.Add(index, currentData);
+                index++;
+            }
+
         }
 
 
-
-        return dataBase;
+        return csvTable;
     }
 
 

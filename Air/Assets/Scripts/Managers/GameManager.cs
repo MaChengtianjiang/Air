@@ -18,7 +18,7 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager> {
 
 	void Awake() {
-		Dictionary<int, Dictionary<string, string>> charaTable = CsvLoader.LoadDataBaseCsv("CharaDatas");
+		Dictionary<int, DataTable> charaTable = CsvLoader.LoadDataBaseCsv("CharaDatas");
 		SceneManager.Instance.transform.SetParent(this.transform);
 	}
 
