@@ -1,6 +1,6 @@
 #角色表格,,,,,,,,,,,,,,,,,,,,,,
 #ID,姓名,性别,基础等级,基础血量,基础能量,能量种类,基础力量,基础体力,基础速度,基础技巧,基础悟性,基础根骨,基础魅力,基础感知,初始职业,基础移动力,出场章节,人物特性1人物特性2,,人物特性3,人物特性4,人物特性5
-ID,Name,Sex,Level,HP,EN,EN_Type,Str,Con,Dex,Agi,Int,Apt,Cha,Wis,Job,MovePoint,Chapter,Feature,Feature,Feature,Feature,Feature
+ID,Name,Sex,Level,HP,EN,EN_Type,Str,Con,Dex,Agi,Int,Apt,Cha,Wis,Job,MovePoint,Chapter,Feature1,Feature2,Feature3,Feature4,Feature5
 int,string,string,int,int,int,int,int,int,int,int,int,int,int,int,int,int,int,string,string,string,string,string
 1,项天啸,男,1,24,100,1,18,18,18,18,18,32,28,24,王子,5,1,,,,,
 2,,男,1,23,0,0,17,20,14,11,8,18,11,6,侍卫,5,1,,,,,
