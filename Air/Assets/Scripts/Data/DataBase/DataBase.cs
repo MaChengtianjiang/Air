@@ -16,9 +16,9 @@ public class DataBase<T>
 
 public class DataTable
 {
-    Dictionary<string, string> StringTable;
-    Dictionary<string, int> IntTable;
-    Dictionary<string, float> FloatTable;
+    private Dictionary<string, string> StringTable;
+    private Dictionary<string, int> IntTable;
+    private Dictionary<string, float> FloatTable;
 
     public DataTable()
     {
