@@ -73,6 +73,7 @@
      <Compile Include="Assets\Scripts\Data\Loader\CsvLoader.cs" />
      <Compile Include="Assets\Scripts\Data\Loader\MapLoader.cs" />
      <Compile Include="Assets\Scripts\Define\SceneName.cs" />
+     <Compile Include="Assets\Scripts\Define\SceneStatus.cs" />
      <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
      <Compile Include="Assets\Scripts\Managers\PoolManager.cs" />
      <Compile Include="Assets\Scripts\Managers\SaveManager.cs" />
@@ -82,6 +83,7 @@
      <Compile Include="Assets\Scripts\SaveData\SaveData.cs" />
      <Compile Include="Assets\Scripts\Stage\DiceController.cs" />
      <Compile Include="Assets\Scripts\Stage\StageCell.cs" />
+     <Compile Include="Assets\Scripts\Utils\ListUtils.cs" />
      <None Include="Assets\Package\Dice\-Read-Me-.txt" />
      <None Include="Assets\Package\Five Seamless Tileable Ground Textures\read me.txt" />
  <Reference Include="Unity.Timeline.Editor">

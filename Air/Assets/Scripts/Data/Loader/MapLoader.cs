@@ -27,16 +27,14 @@ public class MapLoader {
         string value = asset.text;
 
         //分割行
-        string[] strLine = value.Split('\n');
+        string[] strLine = value.Split(new string[] { "\r\n" }, StringSplitOptions.None);
         for (int i = 0; i < strLine.Length; i++) {
             string currentStrLine = strLine[i];
-            // 忽略行 忽略符号 #
-            if (currentStrLine.Substring(0, 1) == "#") {
-                continue;
-            }
-
+            // Debug.Log(String.Format("第{0}行", i));
             List<String> currentDatas = currentStrLine.Split(',').ToList();
+        
             csvTable.Add(currentDatas);
+            
         }
 
 

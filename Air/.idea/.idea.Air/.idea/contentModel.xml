@@ -50,6 +50,7 @@
           </e>
           <e p="Define" t="Include">
             <e p="SceneName.cs" t="Include" />
+            <e p="SceneStatus.cs" t="Include" />
           </e>
           <e p="Managers" t="Include">
             <e p="GameManager.cs" t="Include" />
@@ -65,6 +66,9 @@
           <e p="Stage" t="Include">
             <e p="DiceController.cs" t="Include" />
             <e p="StageCell.cs" t="Include" />
+          </e>
+          <e p="Utils" t="Include">
+            <e p="ListUtils.cs" t="Include" />
           </e>
         </e>
       </e>

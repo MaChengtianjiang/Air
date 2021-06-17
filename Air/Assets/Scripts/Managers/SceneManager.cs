@@ -11,6 +11,7 @@
 */
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,37 +21,69 @@ public class SceneManager : Singleton<SceneManager> {
     [SerializeField] private DiceController _diceController;
 
 
-    private bool _isInit = false;
-
+    private SceneStatus _sceneStatus = SceneStatus.Loading;
 
     internal int stageWidth { get; private set; } = 0;
     internal int stageHeight { get; private set; } = 0;
 
-    internal StageCell[,] stageMap {
-        get;
-        private set; 
-    }
-    
+    internal StageCell[,] stageMap { get; private set; }
 
-    private void Start() {
-        Debug.Log("SceneManager:Initialize");
-    }
 
-    public void Init() {
+    internal Player player;
+
+
+    public IEnumerator Init(String stageName) {
         _diceController.CreateSpawn();
-        LoaderStage("Stage1");
+        LoaderStage(stageName);
+        while (player != null) {
+            yield return null;
+        }
 
-        _isInit = true;
+        _sceneStatus = SceneStatus.Stand;
+    }
+
+    public bool isReady() {
+        return _sceneStatus != SceneStatus.Loading;
     }
 
 
     void Update() {
-        if (!_isInit) {
+        if (_sceneStatus == SceneStatus.Loading) {
             return;
         }
 
-        if (true) {
-            _diceController.Roll();
+        _JudgeStatus();
+    }
+
+
+    /**
+     * 状态判断
+     */
+    void _JudgeStatus() {
+        switch (_sceneStatus) {
+            case SceneStatus.Stand:
+                // 掷骰子
+                _diceController.Roll(
+                    () => { _sceneStatus = SceneStatus.RollDice; });
+                break;
+            case SceneStatus.RollDice:
+                if (!Dice.rolling) {
+                    _sceneStatus = SceneStatus.Run;
+                    Debug.Log(String.Format("Dice.Count:{0}", Dice.Value("d6")));
+                    StartCoroutine(player.Run(Dice.Value("d6")));
+                }
+
+                break;
+            case SceneStatus.Run:
+                if (player.isStop()) {
+                    _sceneStatus = SceneStatus.InCell;
+                }
+
+                break;
+            case SceneStatus.InCell:
+                // 先进入到下一轮
+                _sceneStatus = SceneStatus.Stand;
+                break;
         }
     }
 
@@ -61,6 +94,9 @@ public class SceneManager : Singleton<SceneManager> {
     public void LoaderStage(String stageName) {
         List<List<String>> map = MapLoader.LoadDataBaseCsv(stageName);
 
+        // 反转y轴(不然为逆向)
+        map.Reverse();
+
         // map.ForEach(x => Debug.Log(String.Join(",", x)));
 
         // 高
@@ -70,7 +106,7 @@ public class SceneManager : Singleton<SceneManager> {
         foreach (var row in map) {
             stageWidth = stageWidth < row.Count ? row.Count : stageWidth;
         }
-        
+
         stageMap = new StageCell [stageWidth, stageHeight];
 
 
@@ -78,12 +114,14 @@ public class SceneManager : Singleton<SceneManager> {
         for (int y = 0; y < map.Count; y++) {
             for (int x = 0; x < map[y].Count; x++) {
                 switch (map[y][x]) {
+                    case "":
+                    case null:
                     case "0":
                         continue;
                         break;
                     default:
                         var go = frontObj;
-                        go.transform.position = new Vector3(x, -y, 0);
+                        go.transform.position = new Vector3(x, y, 0);
                         GameObject temp = Instantiate(go, this.transform, true) as GameObject;
                         temp.name = $"front({x}, {y})";
                         stageMap[x, y] = temp.GetComponent<StageCell>();
@@ -91,7 +129,11 @@ public class SceneManager : Singleton<SceneManager> {
                 }
             }
         }
-        
+
         Debug.Log("");
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 }

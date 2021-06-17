@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,10 +28,9 @@ public class DiceController : MonoBehaviour {
     }
 
 
-    public void Roll() {
+    public void Roll(Action callback) {
 
         if (Dice.rolling) {
-            Debug.Log("正在掷色");
             return;
         }
 
@@ -39,6 +39,8 @@ public class DiceController : MonoBehaviour {
             string[] a = _galleryDie.Split('-');
             // ReSharper disable once Unity.PerformanceCriticalCodeInvocation
             Dice.Roll("1" + a[0], _galleryDie, _spawnPos, DiceForce());
+
+            callback();
         }
     }
 }

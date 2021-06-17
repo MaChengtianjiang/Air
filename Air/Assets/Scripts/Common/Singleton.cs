@@ -39,10 +39,9 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour {
 			string path = string.Format(MANAGER_PREFAB, name);
 
 			Object prefab = Resources.Load(path);
-
-			// 2015.08.24 hfujii エラーチェック追加
+			
 			if (prefab == null) {
-				Debug.LogError("Singletonのプレハブ " + path + " が読み込めませんでした");
+				Debug.LogError("Singleton的Prefab " + path + "已经被加载完成!");
 			}
 
 			GameObject singleton = Instantiate(prefab) as GameObject;
@@ -71,7 +70,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour {
 	}
 
 	/**
-	 * シングルトンクラスのオブジェクトがシーン中に存在するかどうか
+	 * 是否已经存在单例
 	 */
 	public static bool IsExists {
 		get {
