@@ -1,13 +1,4 @@
-﻿//
-//  SceneName#FILEEXTENSION#
-//  #PROJECTNAME#
-//
-//  Created by #SMARTDEVELOPERS# on #CREATIONDATE#.
-//
-//
- 
- 
-using System;
+﻿using System;
 
 public enum SceneName {
 	Title,

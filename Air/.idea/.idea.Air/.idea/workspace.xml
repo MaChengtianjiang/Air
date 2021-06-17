@@ -37,15 +37,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="15d7b061-28de-4db8-ac38-480a226ea04f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Air/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Air/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Air/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Air/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Air.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Air.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/AddFileHeadComment.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/AddFileHeadComment.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scene/Stage1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/Stage1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Define/SceneName.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Define/SceneName.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Define/SceneStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Define/SceneStatus.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/SoundManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/SoundManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Stage/DiceController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Stage/DiceController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/BuiltinAssemblies.stamp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler0.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,21 +71,22 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Test.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Managers/PoolManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Managers/SaveManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Managers/SoundManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Package/Dice/Plugins/Dice.cs" />
         <option value="$PROJECT_DIR$/Assets/Package/Dice/scenes/Demo/AppDemo.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Chara/MovingObject.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Utils/ListUtils.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/Singleton.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Define/SceneStatus.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Data/Loader/MapLoader.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Stage/DiceController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Chara/MoveObject.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Managers/SceneManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Chara/Player.cs" />
         <option value="$PROJECT_DIR$/Assets/Editor/AddFileHeadComment.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Common/AddFileHeadComment.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Define/SceneName.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Define/SceneStatus.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Managers/SoundManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Stage/DiceController.cs" />
       </list>
     </option>
   </component>
@@ -146,7 +148,7 @@
       <workItem from="1623833326095" duration="4150000" />
       <workItem from="1623892000783" duration="9307000" />
       <workItem from="1623911442166" duration="35000" />
-      <workItem from="1623911787259" duration="22000" />
+      <workItem from="1623911787259" duration="839000" />
     </task>
     <servers />
   </component>

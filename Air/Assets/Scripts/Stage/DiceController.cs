@@ -7,7 +7,7 @@ public class DiceController : MonoBehaviour {
 
 
     // 生成点的坐标
-    [SerializeField] private Vector3 _spawnPos = new Vector3(-100, 11, -10);
+    [SerializeField] private Vector3 _spawnPos = new Vector3(-100, 5, -10);
     [SerializeField] private Vector3 _rollTargetPos = Vector3.zero;
 
 
