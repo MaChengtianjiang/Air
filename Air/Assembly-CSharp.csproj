@@ -83,6 +83,7 @@
      <Compile Include="Assets\Scripts\SaveData\SaveData.cs" />
      <Compile Include="Assets\Scripts\Stage\DiceController.cs" />
      <Compile Include="Assets\Scripts\Stage\StageCell.cs" />
+     <Compile Include="Assets\Scripts\Stage\StageUIController.cs" />
      <Compile Include="Assets\Scripts\Utils\ListUtils.cs" />
      <None Include="Assets\Package\Dice\-Read-Me-.txt" />
      <None Include="Assets\Package\Five Seamless Tileable Ground Textures\read me.txt" />

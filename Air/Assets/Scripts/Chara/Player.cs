@@ -12,7 +12,7 @@ public class Player : MovingObject {
     protected override void Start() {
         //调用MovingObject的Start
         base.Start();
-        SceneManager.Instance.setPlayer(this);
+        SceneManager.Instance.SetPlayer(this);
         
         // 测试无限走
         // StartCoroutine(Run(99999));

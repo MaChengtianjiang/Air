@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frontObj: {fileID: 991656099333734143, guid: 214c20fd6901d4151a46b4f27a48b933, type: 3}
-  _diceController: {fileID: 6908303808199058299}
+  diceController: {fileID: 6908303808199058299}
 --- !u!114 &6908303808199058299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,4 +58,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4c1ef0551dc48b0b333623c7766f20c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  postion: {x: -100, y: 11, z: -10}
+  _spawnPos: {x: -100, y: 5, z: -10}
+  _rollTargetPos: {x: 0, y: 0, z: 0}

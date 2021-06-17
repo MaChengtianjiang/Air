@@ -15,7 +15,7 @@ public class DiceController : MonoBehaviour {
     private string _galleryDie = "d6-white";
     
 
-    public void CreateSpawn() {
+    public void Init() {
 
         _rollTargetPos = _rollTargetPos + new Vector3(0, -9.5f, 0);
     }
@@ -34,13 +34,13 @@ public class DiceController : MonoBehaviour {
             return;
         }
 
-        if (Input.GetMouseButtonDown(Dice.MOUSE_RIGHT_BUTTON)) {
+        // if (Input.GetMouseButtonDown(Dice.MOUSE_RIGHT_BUTTON)) {
             Dice.Clear();
             string[] a = _galleryDie.Split('-');
             // ReSharper disable once Unity.PerformanceCriticalCodeInvocation
             Dice.Roll("1" + a[0], _galleryDie, _spawnPos, DiceForce());
 
             callback();
-        }
+        // }
     }
 }

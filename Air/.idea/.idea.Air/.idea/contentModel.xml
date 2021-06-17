@@ -66,6 +66,7 @@
           <e p="Stage" t="Include">
             <e p="DiceController.cs" t="Include" />
             <e p="StageCell.cs" t="Include" />
+            <e p="StageUIController.cs" t="Include" />
           </e>
           <e p="Utils" t="Include">
             <e p="ListUtils.cs" t="Include" />

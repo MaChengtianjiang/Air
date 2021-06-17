@@ -49,9 +49,9 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour {
 			DontDestroyOnLoad(singleton);
 			instance = singleton.GetComponent<T>();
 
-			Debug.Log("[Singleton] An instance of " + typeof(T) + " is needed in the scene, so '" + singleton + "' was created with DontDestroyOnLoad.");
+			// Debug.Log("[Singleton] An instance of " + typeof(T) + " is needed in the scene, so '" + singleton + "' was created with DontDestroyOnLoad.");
 		} else {
-			Debug.Log("[Singleton] Using instance already created: " + instance.gameObject.name);
+			// Debug.Log("[Singleton] Using instance already created: " + instance.gameObject.name);
 		}
 
 		return instance;

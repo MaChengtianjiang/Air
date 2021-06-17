@@ -14,11 +14,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class SceneManager : Singleton<SceneManager> {
     [SerializeField] private GameObject frontObj;
 
-    [SerializeField] private DiceController _diceController;
+    [SerializeField] private DiceController diceController;
 
 
     private SceneStatus _sceneStatus = SceneStatus.Loading;
@@ -29,15 +30,36 @@ public class SceneManager : Singleton<SceneManager> {
     internal StageCell[,] stageMap { get; private set; }
 
 
-    internal Player player;
+    private Player player;
+    private StageUIController stageUIController;
 
-
+    public void SetPlayer(Player player) {
+        this.player = player;
+    }
+    
+    public void SetUIController(StageUIController controller) {
+        this.stageUIController = controller;
+    }
+    
+    
     public IEnumerator Init(String stageName) {
-        _diceController.CreateSpawn();
+        
+
+        
+        // TODO 优化成异步处理
         LoaderStage(stageName);
+        
+        // 等待各独立对象完成初始化
         while (player != null) {
             yield return null;
         }
+        
+        while (stageUIController != null) {
+            yield return null;
+        }
+        
+        // 初始化骰子
+        diceController.Init();
 
         _sceneStatus = SceneStatus.Stand;
     }
@@ -56,15 +78,14 @@ public class SceneManager : Singleton<SceneManager> {
     }
 
 
+
     /**
      * 状态判断
      */
     void _JudgeStatus() {
         switch (_sceneStatus) {
             case SceneStatus.Stand:
-                // 掷骰子
-                _diceController.Roll(
-                    () => { _sceneStatus = SceneStatus.RollDice; });
+                stageUIController.ShowUI();
                 break;
             case SceneStatus.RollDice:
                 if (!Dice.rolling) {
@@ -129,11 +150,16 @@ public class SceneManager : Singleton<SceneManager> {
                 }
             }
         }
-
-        Debug.Log("");
+        
     }
 
-    public void setPlayer(Player player) {
-        this.player = player;
+
+    public void RollDice(StageUIController stageUIController) {
+        diceController.Roll(
+            () => {
+                _sceneStatus = SceneStatus.RollDice;
+                stageUIController.HideUI();
+            });
     }
+
 }
