@@ -1,8 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:PlanStation" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="15d7b061-28de-4db8-ac38-480a226ea04f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Chara/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Chara/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/AddFileHeadComment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AddFileHeadComment.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/AddFileHeadComment.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Editor/AddFileHeadComment.cs.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +135,7 @@
       <workItem from="1623228561402" duration="3013000" />
       <workItem from="1623289943833" duration="8668000" />
       <workItem from="1623833326095" duration="4150000" />
-      <workItem from="1623892000783" duration="8966000" />
+      <workItem from="1623892000783" duration="9175000" />
     </task>
     <servers />
   </component>
@@ -107,6 +144,17 @@
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
@@ -179,10 +227,10 @@
       <screen x="-1920" y="25" width="1920" height="1055" />
     </state>
     <state width="1878" height="315" key="GridCell.Tab.3.right/0.25.1440.875/-1920.25.1920.1055@-1920.25.1920.1055" timestamp="1623910311707" />
-    <state x="-1451" y="188" key="SettingsEditor" timestamp="1622541230924">
+    <state x="-1451" y="188" key="SettingsEditor" timestamp="1623910931479">
       <screen x="-1920" y="25" width="1920" height="1055" />
     </state>
-    <state x="-1451" y="188" key="SettingsEditor/0.25.1440.875/-1920.25.1920.1055@-1920.25.1920.1055" timestamp="1622541230924" />
+    <state x="-1451" y="188" key="SettingsEditor/0.25.1440.875/-1920.25.1920.1055@-1920.25.1920.1055" timestamp="1623910931479" />
     <state x="-1820" y="125" width="1720" height="855" key="VCS.FileHistoryDialog" timestamp="1623052489960">
       <screen x="-1920" y="25" width="1920" height="1055" />
     </state>
