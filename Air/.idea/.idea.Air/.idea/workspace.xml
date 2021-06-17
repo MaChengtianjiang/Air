@@ -2,24 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15d7b061-28de-4db8-ac38-480a226ea04f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Air/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Air/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Air/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Air/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Csv/Stage/Stage1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Csv/Stage/Stage1.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Grass.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Grass.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scene/Stage1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scene/Stage1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Chara/MoveObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Chara/MoveObject.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Chara/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Chara/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Common/Singleton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Common/Singleton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Loader/MapLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Loader/MapLoader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/SceneManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/SceneManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Stage/DiceController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Stage/DiceController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/BuiltinAssemblies.stamp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/expandedItems" beforeDir="false" afterPath="$PROJECT_DIR$/Library/expandedItems" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler0.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,8 +37,8 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Data/Loader/MapLoader.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Stage/DiceController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Chara/MoveObject.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Chara/Player.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Managers/SceneManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Chara/Player.cs" />
       </list>
     </option>
   </component>
@@ -115,7 +98,7 @@
       <workItem from="1623228561402" duration="3013000" />
       <workItem from="1623289943833" duration="8668000" />
       <workItem from="1623833326095" duration="4150000" />
-      <workItem from="1623892000783" duration="8838000" />
+      <workItem from="1623892000783" duration="8966000" />
     </task>
     <servers />
   </component>
