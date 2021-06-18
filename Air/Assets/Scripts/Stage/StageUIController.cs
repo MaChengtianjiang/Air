@@ -23,7 +23,7 @@ public class StageUIController : MonoBehaviour {
 
     public void Awake() {
         SceneManager.Instance.SetUIController(this);
-        _rollDiceFunc = new RollDiceFunc(SceneManager.Instance.RollDice);
+        _rollDiceFunc = SceneManager.Instance.RollDice;
     }
 
 

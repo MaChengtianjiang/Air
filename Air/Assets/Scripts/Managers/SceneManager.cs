@@ -140,6 +140,9 @@ public class SceneManager : Singleton<SceneManager> {
                     case "0":
                         continue;
                         break;
+                    case "S":
+                        // 起点
+                        break;
                     default:
                         var go = frontObj;
                         go.transform.position = new Vector3(x, y, 0);
