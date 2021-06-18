@@ -15,7 +15,10 @@ public abstract class MovingObject : MonoBehaviour {
     private Rigidbody2D rb2D; //对象的刚体
     
 
-    private bool isMoving = false;
+    [SerializeField]
+    private Transform body;
+    
+    protected bool isMoving = false;
 
 
     // 方向
@@ -113,6 +116,13 @@ public abstract class MovingObject : MonoBehaviour {
 
             //调用刚体的移动方法去移动计算出来的新坐标
             rb2D.MovePosition (newPostion);
+            
+            //转头
+            Vector3 rotateVector = end - transform.position;
+            Quaternion newRotation = Quaternion.LookRotation (rotateVector);
+            body.rotation = Quaternion.RotateTowards (body.rotation, newRotation, 1 * Time.deltaTime);
+
+
 
             //再次计算距离.直到距离接近0
             sqrRemainingDistance = (transform.position - end).sqrMagnitude;

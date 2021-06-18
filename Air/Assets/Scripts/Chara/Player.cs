@@ -8,12 +8,18 @@ public class Player : MovingObject {
 
     private int _step = 0;
     
+    [SerializeField]
+    private Animator anim;						// 动画控制
+
+
+    
     //继承MovingObject的Start方法　用base调用
     protected override void Start() {
         //调用MovingObject的Start
         base.Start();
         SceneManager.Instance.SetPlayer(this);
         
+
         // 测试无限走
         // StartCoroutine(Run(99999));
     }
@@ -25,7 +31,7 @@ public class Player : MovingObject {
 
     void Update() {
 
-       
+        anim.SetBool("Run", isMoving);
     }
 
 
@@ -34,9 +40,12 @@ public class Player : MovingObject {
         this.setStep(step);
         
         while (_step > 0) {
-            AttemptMove<StageCell>();
+            
+            this.AttemptMove<StageCell>();
             yield return 0;
         }
+        
+    
         
         
     }
@@ -73,5 +82,23 @@ public class Player : MovingObject {
     
     public bool isStop() {
         return _step < 1;
+    }
+    
+    //アニメーションEvents側につける表情切り替え用イベントコール
+    public void OnCallChangeFace (string str)
+    {   
+        // int ichecked = 0;
+        // foreach (var animation in animations) {
+        //     if (str == animation.name) {
+        //         ChangeFace (str);
+        //         break;
+        //     } else if (ichecked <= animations.Length) {
+        //         ichecked++;
+        //     } else {
+        //         //str指定が間違っている時にはデフォルトで
+        //         str = "default@unitychan";
+        //         ChangeFace (str);
+        //     }
+        // } 
     }
 }
