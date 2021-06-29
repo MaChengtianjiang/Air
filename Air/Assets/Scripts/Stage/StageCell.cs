@@ -5,14 +5,12 @@ using UnityEngine;
 public class StageCell : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private CellDefine cellType = CellDefine.Event;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+
+
+    public CellDefine getType() {
+        return cellType;
     }
+    
 }

@@ -70,6 +70,8 @@
           </e>
           <e p="Common" t="Include">
             <e p="AddFileHeadComment.cs" t="Include" />
+            <e p="EventHub.cs" t="Include" />
+            <e p="IRotation.cs" t="Include" />
             <e p="Singleton.cs" t="Include" />
           </e>
           <e p="Data" t="Include">
@@ -82,8 +84,11 @@
               <e p="CsvLoader.cs" t="Include" />
               <e p="MapLoader.cs" t="Include" />
             </e>
+            <e p="PlayerParam.cs" t="Include" />
           </e>
           <e p="Define" t="Include">
+            <e p="Axis.cs" t="Include" />
+            <e p="CellDefine.cs" t="Include" />
             <e p="SceneName.cs" t="Include" />
             <e p="SceneStatus.cs" t="Include" />
           </e>
@@ -99,12 +104,15 @@
             <e p="SaveData.cs" t="Include" />
           </e>
           <e p="Stage" t="Include">
+            <e p="CameraController.cs" t="Include" />
             <e p="DiceController.cs" t="Include" />
+            <e p="LightController.cs" t="Include" />
             <e p="StageCell.cs" t="Include" />
             <e p="StageUIController.cs" t="Include" />
           </e>
           <e p="Utils" t="Include">
             <e p="ListUtils.cs" t="Include" />
+            <e p="Utility.cs" t="Include" />
           </e>
         </e>
       </e>

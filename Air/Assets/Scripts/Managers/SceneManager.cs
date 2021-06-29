@@ -32,15 +32,23 @@ public class SceneManager : Singleton<SceneManager> {
 
     private Player player;
     private StageUIController stageUIController;
+    private CameraController cameraController;
 
     public void SetPlayer(Player player) {
         this.player = player;
     }
     
     public void SetUIController(StageUIController controller) {
-        this.stageUIController = controller;
+        stageUIController = controller;
     }
     
+    public void SetCameraController(CameraController controller) {
+        cameraController = controller;
+    }
+    
+    public void SetCameraPos(Vector3 pos) {
+        cameraController.setPos(pos);
+    }
     
     public IEnumerator Init(String stageName) {
         
@@ -50,11 +58,15 @@ public class SceneManager : Singleton<SceneManager> {
         LoaderStage(stageName);
         
         // 等待各独立对象完成初始化
-        while (player != null) {
+        while (player == null) {
             yield return null;
         }
         
-        while (stageUIController != null) {
+        while (stageUIController == null) {
+            yield return null;
+        }
+        
+        while (cameraController == null) {
             yield return null;
         }
         
@@ -103,6 +115,7 @@ public class SceneManager : Singleton<SceneManager> {
                 break;
             case SceneStatus.InCell:
                 // 先进入到下一轮
+                
                 _sceneStatus = SceneStatus.Stand;
                 break;
         }
@@ -163,6 +176,14 @@ public class SceneManager : Singleton<SceneManager> {
                 _sceneStatus = SceneStatus.RollDice;
                 stageUIController.HideUI();
             });
+    }
+
+
+    private StageCell _currentCell;
+    public void setCurrentCell(StageCell cell) {
+        _currentCell = cell;
+        Debug.Log("_currentCell:" + _currentCell.getType());
+        
     }
 
 }

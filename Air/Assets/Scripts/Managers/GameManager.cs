@@ -10,6 +10,11 @@ public class GameManager : Singleton<GameManager> {
 
     [SerializeField] private String stageName = "Stage1";
 
+
+    [SerializeField] private PlayerParam playerParam;
+    
+    
+    
     void Awake() {
         StartCoroutine(this.Initialize());
     }
@@ -41,6 +46,10 @@ public class GameManager : Singleton<GameManager> {
         while (!SceneManager.Instance.isReady()) {
             yield return null;
         }
+        
+        
+        playerParam = new PlayerParam();
+        
 
 
         _isInitialized = true;

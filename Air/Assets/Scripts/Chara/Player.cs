@@ -1,4 +1,5 @@
 using System.Collections;
+using Define;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,11 +19,12 @@ public class Player : MovingObject {
         //调用MovingObject的Start
         base.Start();
         SceneManager.Instance.SetPlayer(this);
-        
+
 
         // 测试无限走
         // StartCoroutine(Run(99999));
     }
+
 
     //Player脚本无效之前、体力保存至GameManager
     //Unity的生命周期API方法
