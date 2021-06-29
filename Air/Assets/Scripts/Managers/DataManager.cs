@@ -3,6 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SaveManager : Singleton<SaveManager> {
+public class DataManager : Singleton<DataManager> {
    
 }

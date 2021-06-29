@@ -960,12 +960,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageName: Stage2
-  playerParam:
+  playerData:
     Str: 5
     Int: 5
     Moral: 5
     Charm: 5
-    Rounds: 1
     Pride: 50
     Greed: 50
     Lust: 50
@@ -973,6 +972,8 @@ MonoBehaviour:
     Gluttony: 50
     Wrath: 50
     Sloth: 50
+  gameData:
+    Rounds: 1
 --- !u!4 &1344641711
 Transform:
   m_ObjectHideFlags: 0
@@ -1238,7 +1239,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1609834867}
   m_LocalRotation: {x: 0.57357657, y: -0, z: -0, w: -0.81915194}
-  m_LocalPosition: {x: 5, y: -2, z: -2}
+  m_LocalPosition: {x: 6.92, y: -2, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

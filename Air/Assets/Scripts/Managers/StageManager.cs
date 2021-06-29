@@ -16,18 +16,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class SceneManager : Singleton<SceneManager> {
-    [SerializeField] private GameObject frontObj;
-
+public class StageManager : Singleton<StageManager> {
     [SerializeField] private DiceController diceController;
+    [SerializeField] private StageBuilder _stageBuilder;
 
 
     private SceneStatus _sceneStatus = SceneStatus.Loading;
 
-    internal int stageWidth { get; private set; } = 0;
-    internal int stageHeight { get; private set; } = 0;
+    internal int stageWidth { get; set; } = 0;
+    internal int stageHeight { get; set; } = 0;
 
-    internal StageCell[,] stageMap { get; private set; }
+    internal StageCell[,] stageMap { get; set; }
 
 
     private Player player;
@@ -37,39 +36,36 @@ public class SceneManager : Singleton<SceneManager> {
     public void SetPlayer(Player player) {
         this.player = player;
     }
-    
+
     public void SetUIController(StageUIController controller) {
         stageUIController = controller;
     }
-    
+
     public void SetCameraController(CameraController controller) {
         cameraController = controller;
     }
-    
+
     public void SetCameraPos(Vector3 pos) {
         cameraController.setPos(pos);
     }
-    
-    public IEnumerator Init(String stageName) {
-        
 
-        
+    public IEnumerator Init(String stageName) {
         // TODO 优化成异步处理
-        LoaderStage(stageName);
-        
+        _stageBuilder.LoaderStage(stageName);
+
         // 等待各独立对象完成初始化
         while (player == null) {
             yield return null;
         }
-        
+
         while (stageUIController == null) {
             yield return null;
         }
-        
+
         while (cameraController == null) {
             yield return null;
         }
-        
+
         // 初始化骰子
         diceController.Init();
 
@@ -88,7 +84,6 @@ public class SceneManager : Singleton<SceneManager> {
 
         _JudgeStatus();
     }
-
 
 
     /**
@@ -115,58 +110,10 @@ public class SceneManager : Singleton<SceneManager> {
                 break;
             case SceneStatus.InCell:
                 // 先进入到下一轮
-                
+
                 _sceneStatus = SceneStatus.Stand;
                 break;
         }
-    }
-
-
-    /**
-     * 读取场景
-     */
-    public void LoaderStage(String stageName) {
-        List<List<String>> map = MapLoader.LoadDataBaseCsv(stageName);
-
-        // 反转y轴(不然为逆向)
-        map.Reverse();
-
-        // map.ForEach(x => Debug.Log(String.Join(",", x)));
-
-        // 高
-        stageHeight = map.Count;
-
-        // 遍历获取宽
-        foreach (var row in map) {
-            stageWidth = stageWidth < row.Count ? row.Count : stageWidth;
-        }
-
-        stageMap = new StageCell [stageWidth, stageHeight];
-
-
-        // 获取宽度
-        for (int y = 0; y < map.Count; y++) {
-            for (int x = 0; x < map[y].Count; x++) {
-                switch (map[y][x]) {
-                    case "":
-                    case null:
-                    case "0":
-                        continue;
-                        break;
-                    case "S":
-                        // 起点
-                        break;
-                    default:
-                        var go = frontObj;
-                        go.transform.position = new Vector3(x, y, 0);
-                        GameObject temp = Instantiate(go, this.transform, true) as GameObject;
-                        temp.name = $"front({x}, {y})";
-                        stageMap[x, y] = temp.GetComponent<StageCell>();
-                        break;
-                }
-            }
-        }
-        
     }
 
 
@@ -180,10 +127,9 @@ public class SceneManager : Singleton<SceneManager> {
 
 
     private StageCell _currentCell;
+
     public void setCurrentCell(StageCell cell) {
         _currentCell = cell;
         Debug.Log("_currentCell:" + _currentCell.getType());
-        
     }
-
 }

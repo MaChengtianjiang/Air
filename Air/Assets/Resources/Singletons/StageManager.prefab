@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 4312485715621042}
   - component: {fileID: 114283064325725536}
   - component: {fileID: 6908303808199058299}
+  - component: {fileID: 3042135930939756647}
   m_Layer: 0
-  m_Name: SceneManager
+  m_Name: StageManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,8 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b54ce9218150c47a4b661aa9cd983bae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frontObj: {fileID: 991656099333734143, guid: 214c20fd6901d4151a46b4f27a48b933, type: 3}
   diceController: {fileID: 6908303808199058299}
+  _stageBuilder: {fileID: 3042135930939756647}
 --- !u!114 &6908303808199058299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,3 +61,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnPos: {x: -100, y: 5, z: -10}
   _rollTargetPos: {x: 0, y: 0, z: 0}
+--- !u!114 &3042135930939756647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1903922429558674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e95d4988b90408cb4ed47d8e3552ecd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

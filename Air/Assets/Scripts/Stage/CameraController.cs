@@ -17,7 +17,7 @@ public class CameraController : MonoBehaviour {
 
     
     public void Awake() {
-        SceneManager.Instance.SetCameraController(this);
+        StageManager.Instance.SetCameraController(this);
     }
 
 

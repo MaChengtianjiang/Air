@@ -65,8 +65,8 @@ public abstract class MovingObject : IRotation {
 
 
             // 判断是否越界
-            bool isRowMax = end.x < 0 || Mathf.RoundToInt(end.x) >= SceneManager.Instance.stageWidth;
-            bool isColMax = end.y < 0 || Mathf.RoundToInt(Mathf.Abs(end.y)) >= SceneManager.Instance.stageHeight;
+            bool isRowMax = end.x < 0 || Mathf.RoundToInt(end.x) >= StageManager.Instance.stageWidth;
+            bool isColMax = end.y < 0 || Mathf.RoundToInt(Mathf.Abs(end.y)) >= StageManager.Instance.stageHeight;
 
 
             if (isRowMax || isColMax) {
@@ -74,7 +74,7 @@ public abstract class MovingObject : IRotation {
             }
 
             StageCell cell =
-                SceneManager.Instance.stageMap[Mathf.RoundToInt(end.x), Mathf.RoundToInt(Mathf.Abs(end.y))];
+                StageManager.Instance.stageMap[Mathf.RoundToInt(end.x), Mathf.RoundToInt(Mathf.Abs(end.y))];
 
 
             //检查没有有没有物体
@@ -94,7 +94,7 @@ public abstract class MovingObject : IRotation {
                     // 根据轴进行旋转（可以尝试速度加补间）
                     SetRotateOfAxis(Axis.Y, getRotateAngle(dir, Vector2.right));
 
-                    SceneManager.Instance.setCurrentCell(cell);
+                    StageManager.Instance.setCurrentCell(cell);
 
                 }
 
@@ -130,7 +130,7 @@ public abstract class MovingObject : IRotation {
             rb2D.MovePosition(newPostion);
 
 
-            SceneManager.Instance.SetCameraPos(newPostion + new Vector3(0, -3, -2));
+            StageManager.Instance.SetCameraPos(newPostion + new Vector3(0, -3, -2));
 
 
             //再次计算距离.直到距离接近0

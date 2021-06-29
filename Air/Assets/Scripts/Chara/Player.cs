@@ -18,7 +18,7 @@ public class Player : MovingObject {
     protected override void Start() {
         //调用MovingObject的Start
         base.Start();
-        SceneManager.Instance.SetPlayer(this);
+        StageManager.Instance.SetPlayer(this);
 
 
         // 测试无限走

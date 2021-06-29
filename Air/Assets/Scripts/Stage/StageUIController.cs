@@ -22,8 +22,8 @@ public class StageUIController : MonoBehaviour {
 
 
     public void Awake() {
-        SceneManager.Instance.SetUIController(this);
-        _rollDiceFunc = SceneManager.Instance.RollDice;
+        StageManager.Instance.SetUIController(this);
+        _rollDiceFunc = StageManager.Instance.RollDice;
     }
 
 

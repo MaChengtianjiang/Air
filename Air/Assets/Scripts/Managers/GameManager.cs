@@ -11,10 +11,13 @@ public class GameManager : Singleton<GameManager> {
     [SerializeField] private String stageName = "Stage1";
 
 
-    [SerializeField] private PlayerParam playerParam;
+    // 玩家属性相关
+    [SerializeField] private PlayerData playerData;
     
-    
-    
+    // 游戏属性相关
+    [SerializeField] private GameData gameData;
+
+
     void Awake() {
         StartCoroutine(this.Initialize());
     }
@@ -40,25 +43,41 @@ public class GameManager : Singleton<GameManager> {
         //			DebugMenuManager.Instance.transform.SetParent(this.transform);
         //		}
         // SoundManager.Instance.transform.SetParent(this.transform);
-        SceneManager.Instance.transform.SetParent(this.transform);
-        StartCoroutine(SceneManager.Instance.Init(stageName));
-        
-        while (!SceneManager.Instance.isReady()) {
+        StageManager.Instance.transform.SetParent(this.transform);
+        StartCoroutine(StageManager.Instance.Init(stageName));
+
+        while (!StageManager.Instance.isReady()) {
             yield return null;
         }
-        
-        
-        playerParam = new PlayerParam();
-        
+
+
+        LoadData();
 
 
         _isInitialized = true;
         Debug.Log("========== GameManager Initialized ==========");
     }
 
-    public void TestCsvLoader() {
-        Dictionary<int, DataTable> charaTable = CsvLoader.LoadDataBaseCsv("CharaDatas");
-        var x = charaTable[5];
-        Debug.Log("id:" + charaTable[5].GetIntValue("ID") + "的Value:" + x.GetSrtingValue("Job"));
+
+    void LoadData() {
+        // 读档
+        if (true) {
+            playerData = new PlayerData();
+            gameData = new GameData();
+        } else {
+            
+        }
+        
+        // 根据年龄(回合数)改变场景
     }
+
+    public void AddRound() {
+        gameData.Rounds++;
+    }
+
+    // public void TestCsvLoader() {
+    //     Dictionary<int, DataTable> charaTable = CsvLoader.LoadDataBaseCsv("CharaDatas");
+    //     var x = charaTable[5];
+    //     Debug.Log("id:" + charaTable[5].GetIntValue("ID") + "的Value:" + x.GetSrtingValue("Job"));
+    // }
 }
