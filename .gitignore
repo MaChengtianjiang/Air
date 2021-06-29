@@ -4,6 +4,7 @@ Temp.meta
 Build
 socialSecurity.zip
 .idea
+.vscode
 *.csproj
 *.unityproj
 *.sln
