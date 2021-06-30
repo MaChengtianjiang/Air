@@ -11,11 +11,6 @@ public class GameManager : Singleton<GameManager> {
     [SerializeField] private String stageName = "Stage1";
 
 
-    // 玩家属性相关
-    [SerializeField] private PlayerData playerData;
-    
-    // 游戏属性相关
-    [SerializeField] private GameData gameData;
 
 
     void Awake() {
@@ -42,8 +37,12 @@ public class GameManager : Singleton<GameManager> {
         //		if (Debug.isDebugBuild) {
         //			DebugMenuManager.Instance.transform.SetParent(this.transform);
         //		}
-        // SoundManager.Instance.transform.SetParent(this.transform);
+        SoundManager.Instance.transform.SetParent(this.transform);
         StageManager.Instance.transform.SetParent(this.transform);
+        DataManager.Instance.transform.SetParent(this.transform);
+        
+        
+        DataManager.Instance.Init();
         StartCoroutine(StageManager.Instance.Init(stageName));
 
         while (!StageManager.Instance.isReady()) {
@@ -51,7 +50,6 @@ public class GameManager : Singleton<GameManager> {
         }
 
 
-        LoadData();
 
 
         _isInitialized = true;
@@ -59,21 +57,7 @@ public class GameManager : Singleton<GameManager> {
     }
 
 
-    void LoadData() {
-        // 读档
-        if (true) {
-            playerData = new PlayerData();
-            gameData = new GameData();
-        } else {
-            
-        }
-        
-        // 根据年龄(回合数)改变场景
-    }
 
-    public void AddRound() {
-        gameData.Rounds++;
-    }
 
     // public void TestCsvLoader() {
     //     Dictionary<int, DataTable> charaTable = CsvLoader.LoadDataBaseCsv("CharaDatas");

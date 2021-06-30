@@ -68,6 +68,7 @@ public class StageManager : Singleton<StageManager> {
 
         // 初始化骰子
         diceController.Init();
+        stageUIController.setPlayerData();
 
         _sceneStatus = SceneStatus.Stand;
     }
