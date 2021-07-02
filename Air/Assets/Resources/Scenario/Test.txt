@@ -5,7 +5,8 @@ SetBackground:Images/Paris
 EnterActor:Bill
 EnterActor:Claire
 
-Bill:Hi there!
+Bill:老子要去看演唱会!
+SetBranch:看演唱会-见冬马|不看演唱会-见雪菜
 Claire:This was loaded from a file. Pretty neat huh?
 Bill:Blank lines do nothing
 Bill:Writing 'Conversation:xxxx' makes a new conversation called 'xxxx'
