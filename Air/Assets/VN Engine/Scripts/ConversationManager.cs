@@ -22,6 +22,9 @@ namespace VNEngine
         void Start()
         {
             all_nodes = this.GetComponentsInChildren<Node>();
+
+            // 修改
+            Start_Conversation();
         }
 
 
@@ -75,8 +78,8 @@ namespace VNEngine
             }
         }
         // Runs the current node
-        public void Start_Node()
-        {
+        public void Start_Node() {
+            
             if (cur_node < all_nodes.Length)
                 all_nodes[cur_node].Run_Node();
         }
