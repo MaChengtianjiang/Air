@@ -21,22 +21,22 @@ public class ScenarioManager : Singleton<ScenarioManager> {
 
     private ConversationManager cur;
 
-    public new Button.ButtonClickedEvent event1;
+    [SerializeField] private List<Button.ButtonClickedEvent> eventsHub;
+    private string[] eventsValueList;
 
 
     private void Start() {
-        Play();
+        // Play("Test");
     }
 
 
-    public void Play() {
-
+    public void Play(string path) {
         if (cur != null) {
             // 先销毁
             Destroy(cur.transform.parent);
         }
-        
-        Load("Test");
+
+        Load(path);
         cur.Start_Conversation();
     }
 
@@ -50,14 +50,13 @@ public class ScenarioManager : Singleton<ScenarioManager> {
         string value = asset.text;
 
         //分割行
-        string[] strLine = value.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+        string[] strLine = value.Split(new string[] {"\r\n"}, StringSplitOptions.RemoveEmptyEntries);
 
         // Create a child object to hold all elements created from this file
         Transform import_parent = (new GameObject(Path.GetFileNameWithoutExtension(path))).transform;
         ConversationManager cur_conversation = null;
         string line;
         for (int i = 0; i < strLine.Length - 1; i++) {
-            
             // Read it line by line
             line = strLine[i];
             // Continue if it's an empty line
@@ -115,30 +114,22 @@ public class ScenarioManager : Singleton<ScenarioManager> {
             }
             // ADD MORE HERE IF YOU WISH TO EXTEND THE IMPORTING FUNCTIONALITY
             else if (line.StartsWith("SetBranch", true, System.Globalization.CultureInfo.InvariantCulture)) {
-                var branchList = split_line[1].Split(',');
+                var branchList = split_line[1].Split('|');
                 GameObject go = new GameObject("Set Branch " + split_line[1]);
                 go.transform.parent = cur_conversation.transform;
                 ChoiceNode node = go.AddComponent<ChoiceNode>();
                 node.Name_Of_Choice = "见冬马";
                 node.Number_Of_Choices = 2;
-                node.Button_Text = new string[]{"看演唱会","不看"};
+                node.Button_Text = new string[branchList.Length];
 
-                node.Button_Events[0] = event1;
-                node.Button_Events[1] = event1;
+                eventsValueList = new string[branchList.Length];
 
-
-
-                // foreach (var branch in branchList) {
-                //     
-                //     var branchItem = split_line[1].Split('-');
-                //     // 选项名称
-                //     var choiseName = branchItem[0];
-                //     // 选项归属
-                //     var nextConver = branchItem[1];
-                // }
-
-
-
+                for (int ii = 0; ii < branchList.Length; ii++) {
+                    var branchItem = branchList[ii].Split('-');
+                    node.Button_Text[ii] = branchItem[0];
+                    eventsValueList[ii] = branchItem[1];
+                    node.Button_Events[ii] = eventsHub[ii];
+                }
             }
             // Must be a line of dialogue
             else if (split_line.Length == 2) {
@@ -153,10 +144,10 @@ public class ScenarioManager : Singleton<ScenarioManager> {
 
 
         VNSceneManager.current_conversation = cur_conversation;
-
     }
 
-    public void Choice(string eventName) {
-        print(eventName);
+    public void ChoiceEvent(int index) {
+        
+        print(eventsValueList[index]);
     }
 }
