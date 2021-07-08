@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DataManager : Singleton<DataManager> {
     // 玩家属性相关
-    public PlayerData playerData { private set; get; }
+    public PlayerStatus playerData { private set; get; }
 
     // 游戏属性相关
     public GameData gameData { private set; get; }
@@ -13,12 +13,12 @@ public class DataManager : Singleton<DataManager> {
     public void Init() {
         // 读档
         if (true) {
-            playerData = new PlayerData();
+            playerData = new PlayerStatus();
             gameData = new GameData();
             return;
         }
 
-        playerData = new PlayerData();
+        playerData = new PlayerStatus();
         gameData = new GameData();
     }
 

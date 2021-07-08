@@ -24,20 +24,41 @@ public class ScenarioManager : Singleton<ScenarioManager> {
     [SerializeField] private List<Button.ButtonClickedEvent> eventsHub;
     private string[] eventsValueList;
 
-
+    [SerializeField] private Canvas dialogueCanvas;
+    
+    private List<ScenarioData> ScenarioList;
+    
+    
     private void Start() {
-        // Play("Test");
+        LoadComplete();
+        // ActiveDialogue(true);
+        // PlayScenario("Test");
     }
 
 
-    public void Play(string path) {
+    /**
+     * 读取已结束的事件列表
+     */
+    public void LoadComplete() {
+        ScenarioList = new List<ScenarioData>();
+        // TODO 从游戏记录中获取记录
+
+        #if true
+        ScenarioList.Add(ScenarioData.Test(1));
+        #endif
+    }
+
+
+    public void PlayScenario(string path) {
         if (cur != null) {
             // 先销毁
-            Destroy(cur.transform.parent);
+            cur.Finish_Conversation();
         }
 
         Load(path);
-        cur.Start_Conversation();
+
+        ActiveDialogue(true);
+        // cur.Start_Conversation();
     }
 
     void Load(string path) {
@@ -56,7 +77,7 @@ public class ScenarioManager : Singleton<ScenarioManager> {
         Transform import_parent = (new GameObject(Path.GetFileNameWithoutExtension(path))).transform;
         ConversationManager cur_conversation = null;
         string line;
-        for (int i = 0; i < strLine.Length - 1; i++) {
+        for (int i = 0; i < strLine.Length; i++) {
             // Read it line by line
             line = strLine[i];
             // Continue if it's an empty line
@@ -114,23 +135,43 @@ public class ScenarioManager : Singleton<ScenarioManager> {
             }
             // ADD MORE HERE IF YOU WISH TO EXTEND THE IMPORTING FUNCTIONALITY
             else if (line.StartsWith("SetBranch", true, System.Globalization.CultureInfo.InvariantCulture)) {
-                var branchList = split_line[1].Split('|');
+                var attribute = split_line[1].Split('-');
+                var branchList = attribute[1].Split('|');
+
                 GameObject go = new GameObject("Set Branch " + split_line[1]);
                 go.transform.parent = cur_conversation.transform;
                 ChoiceNode node = go.AddComponent<ChoiceNode>();
-                node.Name_Of_Choice = "见冬马";
-                node.Number_Of_Choices = 2;
+                node.Name_Of_Choice = attribute[0];
+                node.Number_Of_Choices = branchList.Length;
                 node.Button_Text = new string[branchList.Length];
-
                 eventsValueList = new string[branchList.Length];
 
                 for (int ii = 0; ii < branchList.Length; ii++) {
-                    var branchItem = branchList[ii].Split('-');
+                    var branchItem = branchList[ii].Split('=');
                     node.Button_Text[ii] = branchItem[0];
                     eventsValueList[ii] = branchItem[1];
                     node.Button_Events[ii] = eventsHub[ii];
                 }
             }
+            else if (line.StartsWith("Close", true, System.Globalization.CultureInfo.InvariantCulture)) {
+                GameObject exitAllActorsNodego = new GameObject("ExitAllActorsNode");
+                exitAllActorsNodego.transform.parent = cur_conversation.transform;
+                exitAllActorsNodego.AddComponent<ExitAllActorsNode>();
+                
+                GameObject disableBackgroundNodeGo = new GameObject("DisableBackgroundNode");
+                disableBackgroundNodeGo.transform.parent = cur_conversation.transform;
+                disableBackgroundNodeGo.AddComponent<DisableBackgroundNode>();
+                
+                GameObject disableForegroundNodeGo = new GameObject("DisableForegroundNode");
+                disableForegroundNodeGo.transform.parent = cur_conversation.transform;
+                disableForegroundNodeGo.AddComponent<DisableForegroundNode>();
+                
+                GameObject hideShowUINodeGo = new GameObject("HideShowUINode");
+                hideShowUINodeGo.transform.parent = cur_conversation.transform;
+                hideShowUINodeGo.AddComponent<HideShowUINode>();
+
+            }
+
             // Must be a line of dialogue
             else if (split_line.Length == 2) {
                 GameObject go = new GameObject(split_line[0]);
@@ -144,10 +185,21 @@ public class ScenarioManager : Singleton<ScenarioManager> {
 
 
         VNSceneManager.current_conversation = cur_conversation;
+        cur = cur_conversation;
+    }
+
+
+    void ActiveDialogue(bool flag) {
+        dialogueCanvas.gameObject.SetActive(flag);
     }
 
     public void ChoiceEvent(int index) {
-        
         print(eventsValueList[index]);
+
+        cur.Start_Next_Node();
+        // cur.Finish_Conversation();
+        // VNSceneManager.current_conversation.Reset_Conversation();
+
+        // PlayScenario("Test");
     }
 }

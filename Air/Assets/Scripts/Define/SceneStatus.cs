@@ -2,9 +2,11 @@
 
 public enum SceneStatus {
 	Loading = -1,
-	Stand = 0,
+	Before = 0,
+	Stand ,
 	RollDice,
 	Run,
-	InCell
+	InCell,
+	After
 }
 

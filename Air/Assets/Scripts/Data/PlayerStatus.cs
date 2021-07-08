@@ -1,7 +1,7 @@
 // 这里应该继承一个什么通用类
 
 [System.Serializable]
-public class PlayerData {
+public class PlayerStatus {
     // 体能
     public int Str;
 
@@ -35,7 +35,7 @@ public class PlayerData {
     //懒惰
     public int Sloth;
 
-    public PlayerData() {
+    public PlayerStatus() {
         Str = 5;
         Int = 5;
         Moral = 5;

@@ -79,7 +79,7 @@ public class StageManager : Singleton<StageManager> {
 
 
     void Update() {
-        if (_sceneStatus == SceneStatus.Loading) {
+        if (!isReady()) {
             return;
         }
 
@@ -92,6 +92,10 @@ public class StageManager : Singleton<StageManager> {
      */
     void _JudgeStatus() {
         switch (_sceneStatus) {
+            case SceneStatus.Before:
+                // 回合前置判断（判定是否有剧情事件）
+                _sceneStatus = SceneStatus.Stand;
+                break;
             case SceneStatus.Stand:
                 stageUIController.ShowUI();
                 break;
@@ -109,10 +113,18 @@ public class StageManager : Singleton<StageManager> {
                 }
 
                 break;
+            // 处理单元格事件
             case SceneStatus.InCell:
-                // 先进入到下一轮
+                // 先进入到剧情
+                _sceneStatus = SceneStatus.After;
+                stageUIController.HideUI();
+                ScenarioManager.Instance.PlayScenario("Test");
+                break;
 
-                _sceneStatus = SceneStatus.Stand;
+            // 后处理
+            case SceneStatus.After:
+                // 解锁事件等
+                _sceneStatus = SceneStatus.Before;
                 break;
         }
     }

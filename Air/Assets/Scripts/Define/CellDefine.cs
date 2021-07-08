@@ -22,3 +22,4 @@ public enum CellDefine {
     Travel, // * 旅行格 
     Social // * 社交格
 }
+

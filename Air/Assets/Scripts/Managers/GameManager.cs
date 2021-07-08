@@ -40,6 +40,7 @@ public class GameManager : Singleton<GameManager> {
         SoundManager.Instance.transform.SetParent(this.transform);
         StageManager.Instance.transform.SetParent(this.transform);
         DataManager.Instance.transform.SetParent(this.transform);
+        ScenarioManager.Instance.transform.SetParent(this.transform);
         
         
         DataManager.Instance.Init();
