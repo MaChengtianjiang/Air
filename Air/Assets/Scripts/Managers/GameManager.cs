@@ -39,11 +39,14 @@ public class GameManager : Singleton<GameManager> {
         //		}
         SoundManager.Instance.transform.SetParent(this.transform);
         StageManager.Instance.transform.SetParent(this.transform);
+        DatabaseManager.Instance.transform.SetParent(this.transform);
         DataManager.Instance.transform.SetParent(this.transform);
         ScenarioManager.Instance.transform.SetParent(this.transform);
         
         
+        DatabaseManager.Instance.Init();
         DataManager.Instance.Init();
+
         StartCoroutine(StageManager.Instance.Init(stageName));
 
         while (!StageManager.Instance.isReady()) {
