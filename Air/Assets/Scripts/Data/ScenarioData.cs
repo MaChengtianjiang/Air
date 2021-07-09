@@ -1,9 +1,7 @@
 using Mono.Data.Sqlite;
 
 [System.Serializable]
-public class ScenarioData : DataBean<ScenarioData> {
-   
-
+public class ScenarioData : DataBean {
     // 事件说明
     internal string desc;
 
@@ -34,16 +32,16 @@ public class ScenarioData : DataBean<ScenarioData> {
     // 解锁条件3的值
     internal int conditionValue3;
 
-    public ScenarioData() {}
+    public ScenarioData() {
+    }
+
     public static ScenarioData Test(int type) {
-        
         switch (type) {
             case 1:
                 return TestBefore();
             default:
                 return new ScenarioData();
         }
-        
     }
 
     public static ScenarioData TestBefore() {
@@ -57,14 +55,15 @@ public class ScenarioData : DataBean<ScenarioData> {
         temp.conditionValue1 = 10;
         return temp;
     }
-    
-    
+
+
     /**
      * 复写这个玩意得到类
      */
-    @override
-    DataBean<ScenarioData> parseTableData(SqliteDataReader reader ) {
-        
-        return new ScenarioData();
+    public override DataBean parseTableData(SqliteDataReader reader) {
+        var temp =  new ScenarioData();
+        temp.id = reader.GetInt32(reader.GetOrdinal("id"));
+        temp.file = reader.GetString(reader.GetOrdinal("file"));
+        return temp;
     }
 }
