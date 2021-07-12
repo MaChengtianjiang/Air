@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e4336a6decfb4598a3631598f948259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dataBaseReader: {fileID: 1290367679388744372}
+  _sqlReader: {fileID: 1290367679388744372}
 --- !u!114 &1290367679388744372
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,30 +13,31 @@ using System.Data;
 using Mono.Data.Sqlite;
 using UnityEngine;
 
-public class DataBaseReader : MonoBehaviour  {
+public class SqlReader : MonoBehaviour {
     private readonly string DatabasePath = "/Resources/dataBase/demo.db";
 
-    Dictionary<string, DataBean> dataTableMap = new Dictionary<string, DataBean> {
-        {"scenario", new ScenarioData()}
-    };
-
-    Dictionary<string, Dictionary<int, DataBean>> dataBase = new Dictionary<string, Dictionary<int, DataBean>>();
 
 
     private SqliteConnection connection;
     private DataSet set;
-    
 
-    public void Load() {
+
+    public void Load<T>(Dictionary<string, Dictionary<int, DataBean>> dataBase, T item) where T : DataBean {
         connection = new SqliteConnection("Data Source=" + String.Format("{0}{1}", Application.dataPath, DatabasePath));
         connection.Open();
 
-        foreach (var keyValuePair in dataTableMap) {
-            dataBase.Add(keyValuePair.Key, new Dictionary<int, DataBean>());
-            LoaderTableData(keyValuePair.Key, dataTableMap[keyValuePair.Key]);
-        }
+
+        var tableName = DatabaseManager.Instance.GetTableName<T>();
+        
+        
+        dataBase.Add(tableName, new Dictionary<int, DataBean>());
+        LoaderTableData(dataBase, tableName, item);
 
         Debug.Log("DataLoad is ReadFinish");
+
+    }
+
+    public void Close() {
         connection.Dispose();
         connection.Close();
     }
@@ -44,7 +45,7 @@ public class DataBaseReader : MonoBehaviour  {
     /**
      * 获取表数据
      */
-    void LoaderTableData<T>(String tableName, T data) where T : DataBean {
+    void LoaderTableData(Dictionary<string, Dictionary<int, DataBean>> dataBase, String tableName, DataBean data) {
         var command = connection.CreateCommand();
         command.CommandText = "SELECT * FROM " + tableName;
         SqliteDataReader reader = command.ExecuteReader();

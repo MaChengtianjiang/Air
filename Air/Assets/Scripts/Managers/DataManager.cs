@@ -8,7 +8,7 @@ public class DataManager : Singleton<DataManager> {
     public PlayerStatus playerData { private set; get; }
 
     // 游戏属性相关
-    public GameData gameData { private set; get; }
+    public GameData gameData { set; get; }
 
     public void Init() {
         // 读档

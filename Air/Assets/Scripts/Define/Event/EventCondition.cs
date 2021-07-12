@@ -1,6 +1,7 @@
 ﻿using System;
 
 public enum EventCondition {
+    None = 0,
     // 回合
     Turn,
     // 职业

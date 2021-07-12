@@ -6,6 +6,7 @@ using Mono.Data.Sqlite;
 using UnityEngine;
 
 
+[DataTable("scenario")]
 public class ScenarioData : DataBean {
     // 事件对应文件名
     public string file { get; set; }
@@ -20,25 +21,24 @@ public class ScenarioData : DataBean {
     public EventStatus status { get; set; }
 
     // 解锁条件1
-    public EventCondition? condition1 { get; set; }
+    public EventCondition condition1 { get; set; }
 
     // 解锁条件1的值
-    public int? conditionValue1 { get; set; }
+    public int conditionValue1 { get; set; }
 
     // 解锁条件2
-    public EventCondition? condition2 { get; set; }
+    public EventCondition condition2 { get; set; }
 
     // 解锁条件2的值
-    public int? conditionValue2 { get; set; }
+    public int conditionValue2 { get; set; }
 
     // 解锁条件3
-    public EventCondition? condition3 { get; set; }
+    public EventCondition condition3 { get; set; }
 
     // 解锁条件3的值
-    public int? conditionValue3 { get; set; }
+    public int conditionValue3 { get; set; }
 
     public ScenarioData() {
-
     }
 
     public static ScenarioData Test(int type) {
@@ -88,5 +88,7 @@ public class ScenarioData : DataBean {
         else if (item.PropertyType == typeof(EventCondition)) {
             item.SetValue(temp, parseEnum<EventCondition>(reader, item.Name));
         }
+        
     }
+
 }

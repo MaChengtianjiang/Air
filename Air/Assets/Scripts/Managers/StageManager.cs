@@ -118,12 +118,15 @@ public class StageManager : Singleton<StageManager> {
                 // 先进入到剧情
                 _sceneStatus = SceneStatus.After;
                 stageUIController.HideUI();
+
+                _currentCell.getType();
                 ScenarioManager.Instance.PlayScenario("Test");
                 break;
 
             // 后处理
             case SceneStatus.After:
                 // 解锁事件等
+                DataManager.Instance.AddRound();
                 _sceneStatus = SceneStatus.Before;
                 break;
         }

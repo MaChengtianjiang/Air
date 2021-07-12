@@ -2,7 +2,8 @@
 
 public enum EventType {
 
-	Before = 0,
+	None = 0,
+	Before,
 	After,
 	Event,
 	Social,

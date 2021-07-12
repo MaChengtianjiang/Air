@@ -6,7 +6,7 @@ using UnityEngine;
 public class DataBean {
     // id
     public int id;
-
+    
     protected DataBean() {
     }
 
@@ -25,17 +25,17 @@ public class DataBean {
 
             // Debug.Log(String.Format("{0}:{1}", item.Name, result.ToString()));
             if (!string.IsNullOrEmpty(result.ToString())) {
-                // 枚举(这里需要各类自定义)
-                if (item.PropertyType.BaseType.ToString() == "System.Enum") {
-                    temp.setEnum(ref temp, item, reader);
-                }
-                else if (item.PropertyType == typeof(int)) {
-                    // 数值
+                // 数值
+                if (item.PropertyType == typeof(int)) {
                     item.SetValue(temp, int.Parse(result.ToString()));
                 }
+                // 字符串
                 else if (item.PropertyType == typeof(string)) {
-                    // 字符串
                     item.SetValue(temp, result.ToString());
+                }
+                // 枚举(这里需要各类自定义)
+                else if (item.PropertyType.BaseType.ToString() == "System.Enum") {
+                    temp.setEnum(ref temp, item, reader);
                 }
             }
         }
@@ -54,4 +54,7 @@ public class DataBean {
      */
     protected virtual void setEnum<T>(ref T temp, PropertyInfo item, SqliteDataReader reader) {
     }
+    
+    
+    
 }
